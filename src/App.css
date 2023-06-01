@@ -1,4 +1,9 @@
-.App h1 {
-  text-align: center;
-  color: purple;
+.App {
+  font-family: arial, sans-serif;
+}
+
+.App .container {
+  border: 1px solid #878787;
+  margin: 20px auto;
+  max-width: 500px;
 }
