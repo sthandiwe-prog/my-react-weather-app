@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-
+import RealTimeDate from "./RealTimeDate";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
 export default function App() {
-  let city = "Paris";
+  let city = "New York";
   const [weather, setWeatherData] = useState({ ready: false });
 
   function updateData(response) {
@@ -17,7 +17,7 @@ export default function App() {
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
       description: response.data.weather[0].description,
-      date: `Thursday 11:00`,
+      date: new Date(response.data.dt * 1000),
       icon: `https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png`,
     });
   }
@@ -52,7 +52,9 @@ export default function App() {
             <div className="col-6">
               {" "}
               <ul>
-                <li>{weather.date} </li>
+                <li>
+                  <RealTimeDate date={weather.date} />{" "}
+                </li>
                 <li className="text-capitalize"> {weather.description} </li>
                 <li>
                   <div className="clearfix">
