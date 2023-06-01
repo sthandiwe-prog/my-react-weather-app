@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div className="App">
       <div className="container">
-        <form>
+        <form className="mb-4 mt-2">
           <div className="row">
             <div className="col-9">
               {" "}
@@ -17,7 +17,11 @@ export default function App() {
             </div>
             <div className="col-3">
               {" "}
-              <input type="submit" value="Search" className=" btn btn-danger" />
+              <input
+                type="submit"
+                value="Search"
+                className=" btn btn-danger w-100"
+              />
             </div>
           </div>
         </form>
@@ -30,10 +34,18 @@ export default function App() {
               <li> Thursday 13:43 </li>
               <li> fog </li>
               <li>
-                <img
-                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-                  alt="fog"
-                />
+                <div className="clearfix">
+                  {" "}
+                  <img
+                    src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                    className="float-start"
+                    alt="fog"
+                  />{" "}
+                  <div className="float-start">
+                    <span className="temperature ms-2"> 27 </span>
+                    <span className="celsius-temp">°C</span>
+                  </div>
+                </div>
               </li>
             </ul>
           </div>

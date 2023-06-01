@@ -1,9 +1,32 @@
+:root {
+  --main-color: #878787;
+}
+
 .App {
   font-family: arial, sans-serif;
+  color: var(--main-color);
 }
 
 .App .container {
-  border: 1px solid #878787;
+  border: 1px solid var(--main-color);
+  border-radius: 4px;
   margin: 20px auto;
-  max-width: 500px;
+  max-width: 550px;
+  padding: 20px;
+}
+
+.App ul {
+  list-style: none;
+  padding: 0;
+}
+
+.App .temperature {
+  font-weight: 400;
+  font-size: 48px;
+  color: black;
+}
+.App .celsius-temp {
+  position: relative;
+  top: -24px;
+  left: -4px;
 }
