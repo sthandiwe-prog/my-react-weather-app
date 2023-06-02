@@ -101,7 +101,13 @@ export default function App() {
           {" "}
           This project was coded by{" "}
           <strong className="text-dark">Sthandiwe Gasa</strong>, and is{" "}
-          <a href="">open-sourced</a>
+          <a
+            href="https://github.com/sthandiwe-prog/my-react-weather-app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            open-sourced
+          </a>
         </footer>
       </div>
     );
