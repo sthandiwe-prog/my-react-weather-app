@@ -26,6 +26,13 @@
   padding: 0;
 }
 
+.App footer {
+  text-align: center;
+  font-size: small;
+  position: relative;
+  top: -10px;
+}
+
 .App .temperature {
   font-weight: 400;
   font-size: 48px;

@@ -62,7 +62,6 @@ export default function App() {
               </div>
             </div>
           </form>
-
           <h1>{weather.name}</h1>
           <div className="row">
             <div className="col-6">
@@ -98,6 +97,12 @@ export default function App() {
             </div>
           </div>
         </div>
+        <footer>
+          {" "}
+          This project was coded by{" "}
+          <strong className="text-dark">Sthandiwe Gasa</strong>, and is{" "}
+          <a href="">open-sourced</a>
+        </footer>
       </div>
     );
   } else {
