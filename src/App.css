@@ -12,7 +12,7 @@
   border-radius: 4px;
   margin: 20px auto;
   max-width: 550px;
-  padding: 20px;
+  padding: 20px 20px 0px 20px;
 }
 .App h1 {
   font-size: 24px;
@@ -36,4 +36,9 @@
   position: relative;
   top: -24px;
   left: -4px;
+}
+
+.App img {
+  position: relative;
+  top: -10px;
 }

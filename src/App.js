@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import RealTimeDate from "./RealTimeDate";
-import "./App.css";
+import WeatherTemp from "./WeatherTemp";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
+import "./App.css";
 
 export default function App() {
   const [weather, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState("Durban");
   function updateData(response) {
-    console.log(response.data);
     setWeatherData({
       ready: true,
       name: response.data.name,
@@ -17,7 +17,7 @@ export default function App() {
       wind: response.data.wind.speed,
       description: response.data.weather[0].description,
       date: new Date(response.data.dt * 1000),
-      icon: `https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png`,
+      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
   }
 
@@ -71,7 +71,10 @@ export default function App() {
                 <li>
                   <RealTimeDate date={weather.date} />{" "}
                 </li>
-                <li className="text-capitalize"> {weather.description} </li>
+                <li className="text-capitalize mb-2">
+                  {" "}
+                  {weather.description}{" "}
+                </li>
                 <li>
                   <div className="clearfix">
                     {" "}
@@ -81,11 +84,7 @@ export default function App() {
                       alt={weather.description}
                     />{" "}
                     <div className="float-start">
-                      <span className="temperature ms-2">
-                        {" "}
-                        {weather.temperature}{" "}
-                      </span>
-                      <span className="celsius-temp">°C</span>
+                      <WeatherTemp celsius={weather.temperature} />
                     </div>
                   </div>
                 </li>
