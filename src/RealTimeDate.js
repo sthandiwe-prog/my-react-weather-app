@@ -20,7 +20,7 @@ export default function RealTimeDate(props) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  let year = props.date.getYear();
+
   return (
     <div>
       {day} {hours}:{minutes}

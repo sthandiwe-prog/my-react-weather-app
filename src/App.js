@@ -5,9 +5,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
 export default function App() {
-  let city = "New York";
   const [weather, setWeatherData] = useState({ ready: false });
-
+  const [city, setCity] = useState("Durban");
   function updateData(response) {
     console.log(response.data);
     setWeatherData({
@@ -22,6 +21,21 @@ export default function App() {
     });
   }
 
+  function search() {
+    let apiKey = `b98755d1364b40ce6f0dab6b8d71729b`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(updateData);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityUpdates(event) {
+    setCity(event.target.value);
+  }
+
   if (weather.ready) {
     return (
       <div className="App">
@@ -32,6 +46,7 @@ export default function App() {
                 {" "}
                 <input
                   type="search"
+                  onChange={handleCityUpdates}
                   className="form-control"
                   placeholder="Enter a city..."
                 />{" "}
@@ -40,6 +55,7 @@ export default function App() {
                 {" "}
                 <input
                   type="submit"
+                  onClick={handleSubmit}
                   value="Search"
                   className=" btn btn-danger w-100"
                 />
@@ -86,8 +102,7 @@ export default function App() {
       </div>
     );
   } else {
-    let apiKey = `b98755d1364b40ce6f0dab6b8d71729b`;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(updateData);
+    search();
+    return "on load...";
   }
 }
