@@ -96,6 +96,22 @@ export default function App() {
               </ul>
             </div>
           </div>
+          <div className="row">
+            <div className="col">
+              <div className=" weatherForecast">
+                <div className="day">Fri</div>{" "}
+                <img
+                  src={weather.icon}
+                  className="forecastIcon"
+                  alt={weather.description}
+                />
+                <div className="temperatures">
+                  <span className="max-temp">30°</span>
+                  <span className="min-temp ms-1">10°</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <footer>
           {" "}

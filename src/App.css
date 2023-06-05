@@ -49,3 +49,15 @@
   position: relative;
   top: -10px;
 }
+
+.App .weatherForecast {
+  text-align: center;
+}
+
+.App .forecastIcon {
+  width: 80px;
+  margin-top: 10px;
+}
+.App .min-temp {
+  opacity: 0.6;
+}
