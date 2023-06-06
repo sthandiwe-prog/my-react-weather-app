@@ -6,24 +6,26 @@ import axios from "axios";
 import "./App.css";
 
 export default function App() {
+  let apiKey = `b5o50f2tf34ccb880a7e952a5cb31e4d`;
+
   const [weather, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState("Durban");
+
   function updateData(response) {
     setWeatherData({
       ready: true,
-      name: response.data.name,
-      temperature: Math.round(response.data.main.temp),
-      humidity: response.data.main.humidity,
+      name: response.data.city,
+      temperature: Math.round(response.data.temperature.current),
+      humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
-      description: response.data.weather[0].description,
-      date: new Date(response.data.dt * 1000),
-      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      description: response.data.condition.description,
+      date: new Date(response.data.time * 1000),
+      icon: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`,
     });
   }
 
   function search() {
-    let apiKey = `b98755d1364b40ce6f0dab6b8d71729b`;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(updateData);
   }
 
@@ -70,7 +72,7 @@ export default function App() {
                 <li>
                   <RealTimeDate date={weather.date} />{" "}
                 </li>
-                <li className="text-capitalize mb-2">
+                <li className="text-capitalize mb-4">
                   {" "}
                   {weather.description}{" "}
                 </li>
@@ -94,22 +96,6 @@ export default function App() {
                 <li>Humidity : {weather.humidity}% </li>
                 <li>Wind : {weather.wind} km/h</li>
               </ul>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col">
-              <div className=" weatherForecast">
-                <div className="day">Fri</div>{" "}
-                <img
-                  src={weather.icon}
-                  className="forecastIcon"
-                  alt={weather.description}
-                />
-                <div className="temperatures">
-                  <span className="max-temp">30°</span>
-                  <span className="min-temp ms-1">10°</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
